@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Update</title>
+<style>
+body{
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+
+}
+#fullscreen-container {
+	height: 100%;
+	width: 100%;
+    background-color: #3F7FD2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.center{ 
+color: #ffffff;
+text-align: center;
+}
+.loader {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+.footer{
+color: white;
+text-align: center;
+position: absolute;
+bottom: 0px;
+}
+</style>
+</head>
+<body>
+<div id="fullscreen-container">
+<div class="center">
+<div class="loader"></div>
+<p>Working on updates<br>4% complete<br>Don't turn off your computer</p>
+<div class="footer">
+<p>Your PC will restart several time</p>
+</div>
+</div>
+</div>
+<script>
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "f") {
+            toggleFullscreen();
+        }
+    });
+
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch((err) => {
+                console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+</script>
+</body>
+</html>
